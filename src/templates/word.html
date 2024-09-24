@@ -9,9 +9,10 @@
 {% block body %}
 <h1>{{ word }}</h1>
 
-{% for d in definitions %}
-<p>{{d}}</p>
-{% endfor %}
+<ol>
+    {% for d in definitions %}
+    <li>{{ d }}</li>
+    {% endfor %}
+</ol>
 
-<! -- end body -->
 {% endblock %}

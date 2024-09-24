@@ -18,9 +18,12 @@ def w_definitions(word):
     con = sqlite3.connect(DATABASE)
     cur = con.cursor()
     cur.execute("SELECT def FROM words WHERE word = ? COLLATE NOCASE", (escape(word), ))
+
     defi = cur.fetchall()
+    res = [''.join(i) for i in defi] #tuples to list
+
     con.close()
-    return defi
+    return res
 
 if __name__ == "__main__":
     app.run(debug=True)
