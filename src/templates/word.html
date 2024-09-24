@@ -7,7 +7,7 @@
 <!-- body -->
 
 {% block body %}
-<h1>{{ word }}</h1>
+<h1>{{ word.capitalize() }}</h1>
 
 <ol>
     {% for d in definitions %}
