@@ -13,10 +13,16 @@
 {% block body %}
 <h1>{{ word.capitalize() }}</h1>
 
+{% if definitions|length == 0 %}
+    <h2>'{{ word.capitalize() }}' not in database</h2>
+{% endif %}
+
+{% if definitions|length > 0 %}
 <ol>
     {% for d in definitions %}
     <li>{{ d }}</li>
     {% endfor %}
 </ol>
+{% endif %}
 
 {% endblock %}
