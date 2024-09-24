@@ -11,12 +11,16 @@ def index():
 
 @app.route("/<word>")
 def word_def(word):
+    definitions = w_definitions(word)
+    return render_template("word.html", word=word, definitions=definitions)
+
+def w_definitions(word):
     con = sqlite3.connect(DATABASE)
     cur = con.cursor()
     cur.execute("SELECT def FROM words WHERE word = ? COLLATE NOCASE", (escape(word), ))
-    definitions = cur.fetchall()
-    return render_template("word.html", word=word, definitions=definitions)
-
+    defi = cur.fetchall()
+    con.close()
+    return defi
 
 if __name__ == "__main__":
     app.run(debug=True)
