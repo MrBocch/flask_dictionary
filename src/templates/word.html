@@ -6,23 +6,26 @@
 
 {% endblock %}
 
-{% include "input.html" %}
 
 <!-- body -->
 
 {% block body %}
-<h1>{{ word.capitalize() }}</h1>
 
-{% if definitions|length == 0 %}
-    <h2>'{{ word.capitalize() }}' not in database</h2>
-{% endif %}
+{% include "input.html" %}
+<main class="container">
+  <h1>{{ word.capitalize() }}</h1>
 
-{% if definitions|length > 0 %}
-<ol>
-    {% for d in definitions %}
-    <li>{{ d }}</li>
-    {% endfor %}
-</ol>
-{% endif %}
+  {% if definitions|length == 0 %}
+      <h2>Sorry dont have a definition for '{{ word.capitalize() }}'.</h2>
+  {% endif %}
 
-{% endblock %}
+  {% if definitions|length > 0 %}
+  <ol>
+      {% for d in definitions %}
+      <li>{{ d }}</li>
+      {% endfor %}
+  </ol>
+  {% endif %}
+
+  {% endblock %}
+</main>

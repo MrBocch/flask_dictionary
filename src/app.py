@@ -1,9 +1,11 @@
 from flask import Flask, render_template, url_for
 from markupsafe import escape
 import sqlite3
+import os
 
 app = Flask(__name__)
-DATABASE = "dictionary.db"
+current_dir = os.path.dirname(os.path.abspath(__file__))
+DATABASE = f"{current_dir}/dictionary.db"
 
 @app.route("/")
 def index():
@@ -26,4 +28,4 @@ def w_definitions(word):
     return res
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
