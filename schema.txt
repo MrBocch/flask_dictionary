@@ -1,0 +1,5 @@
+CREATE TABLE words (
+  word TEXT,
+  def TEXT
+);
+CREATE INDEX idx_words ON words(word);
