@@ -11,7 +11,7 @@ DATABASE = f"{current_dir}/dictionary.db"
 def index():
     return render_template("index.html")
 
-@app.route("/<word>")
+@app.route("/words/<word>")
 def word_def(word):
     definitions = w_definitions(word)
     return render_template("word.html", word=word, definitions=definitions)
